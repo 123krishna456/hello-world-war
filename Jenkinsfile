@@ -3,8 +3,8 @@ pipeline{
   stages {
     stage ('Build') {
       steps {
+        sh 'mvn package'
         sh 'ls'
-        sh 'pwd'
       }
     }
   }
