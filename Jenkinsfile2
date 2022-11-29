@@ -12,6 +12,7 @@ pipeline {
     stage ('Deploy') {
       agent { label 'jenkinworker2' }
       steps {
+        sh 'pwd'
         sh 'sh /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
         sh 'sleep 3'
         sh 'sh /opt/apache-tomcat-10.0.27/bin/startup.sh'
