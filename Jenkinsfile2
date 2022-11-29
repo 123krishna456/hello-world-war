@@ -2,7 +2,7 @@ pipeline {
   agent none
   stages {
     stage ('Build') {
-      agent { label 'jenkinworker1' }
+      agent { label 'jenkinworker2' }
       steps {
         sh 'mvn package'
         sh 'pwd'
