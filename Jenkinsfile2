@@ -6,7 +6,7 @@ pipeline {
       steps {
         sh 'mvn package'
         sh 'pwd'
-        sh 'sudo scp -R /home/jenkinworker1/workspace/pipelinedeclar2/target/hello-world-war-1.0.0 jenkinworker2@172.31.46.125:/opt/apache-tomcat-10.0.27/webapps'
+        sh 'sudo scp -R target/hello-world-war-1.0.0 jenkinworker2@172.31.46.125:/opt/apache-tomcat-10.0.27/webapps'
       }
     }
     stage ('Deploy') {
