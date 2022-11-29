@@ -1,5 +1,5 @@
 pipeline{
-  agent { label 'jenkinmaster' }
+  agent { label 'jenkinworker2' }
   stages {
     stage ('Build') {
       steps {
