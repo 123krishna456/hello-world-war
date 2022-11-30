@@ -13,9 +13,10 @@ pipeline {
       agent { label 'jenkinworker2' }
       steps {
         sh 'pwd'
-        sh 'sh /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
+        sh 'whoami'
+        sh 'sudo sh /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
         sh 'sleep 10'
-        sh 'sh /opt/apache-tomcat-10.0.27/bin/startup.sh'
+        sh 'sudo sh /opt/apache-tomcat-10.0.27/bin/startup.sh'
       }
     }
   }
