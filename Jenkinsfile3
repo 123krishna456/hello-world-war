@@ -6,7 +6,6 @@ pipeline {
       steps {
         sh 'mvn deploy'
         sh 'pwd'
-        }
       }
     }
     stage ('Deploy') {
