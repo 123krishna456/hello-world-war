@@ -4,6 +4,7 @@ pipeline {
     stage ('Build') {
       agent { label 'jenkinworker1' }
       steps {
+        sh "echo ${BUILD_NUMBER}"
         sh 'mvn package'
         sh 'pwd'
         sh 'scp -r target/hello-world-war-1.0.0 jenkinworker2@172.31.13.22:/opt/apache-tomcat-10.0.27/webapps'
