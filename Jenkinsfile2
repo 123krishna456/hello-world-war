@@ -7,8 +7,9 @@ pipeline {
         sh "echo ${BUILD_VERSION}"
         sh 'mvn deploy'
         sh 'pwd'
-        sh 'cd /home/jenkinworker1/'
-        sh 'touch test1'
+        dir('/home/jenkinworker1/') {
+                sh 'touch test1'
+        }
       }
     }
     stage ('Deploy') {
