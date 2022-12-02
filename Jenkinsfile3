@@ -13,7 +13,7 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'whoami'
-        sh 'curl -u krishnanaikedu@gmail.com:Krishna@123 -O https://krishnajfrog123.jfrog.io/artifactory/libs-release-local/com/
+        sh 'curl -u krishnanaikedu@gmail.com:Krishna@123 -O https://krishnajfrog123.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/5.0.0/hello-world-war-5.0.0.war'
         sh 'sudo cp -R hello-world-war-5.0.0.war /opt/apache-tomcat-10.0.27/webapps/'
         sh 'sudo sh /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
         sh 'sleep 3'
