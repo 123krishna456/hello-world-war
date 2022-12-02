@@ -5,9 +5,8 @@ pipeline {
       agent { label 'jenkinworker1' }
       steps {
         sh "echo ${BUILD_NUMBER}"
-        sh 'mvn package'
+        sh 'mvn deploy'
         sh 'pwd'
-        sh 'scp -r target/hello-world-war-1.0.0 jenkinworker2@172.31.13.22:/opt/apache-tomcat-10.0.27/webapps'
       }
     }
     stage ('Deploy') {
@@ -15,8 +14,10 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'whoami'
+        sh 'curl -u krishnanaikedu@gmail.com:Krishna@123 -O https://krishnajfrog123.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
+        sh 'sudo cp -R hello-world-war-${BUILD_NUMBER}.war /opt/apache-tomcat-10.0.27/webapps/'
         sh 'sudo sh /opt/apache-tomcat-10.0.27/bin/shutdown.sh'
-        sh 'sleep 10'
+        sh 'sleep 3'
         sh 'sudo sh /opt/apache-tomcat-10.0.27/bin/startup.sh'
       }
     }
