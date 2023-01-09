@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage ('buildwar') {
       steps {
-        sh 'docker build -t tomcatbuild -f mytomcatDockerfile .'
+        sh 'docker build -t tomcatbuild:${BUILD_VERSION} -f mytomcatDockerfile .'
       }
     }
     stage ('publishwar') {
       steps {
         sh 'docker login -u krishna123456 -p 123456krishna'
-        sh 'docker tag tomcatbuild:${BUILD_VERSION} krishna123456/tomcat:${BUILD_VERSION}'
+        sh 'docker tag tomcatbuild:${BUILD_VERSION} krishna123456/tomcatbuild:${BUILD_VERSION}'
         sh 'docker push krishna123456/tomcat:{BUILD_VERSION}'
       }
     }
