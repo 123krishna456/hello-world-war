@@ -17,6 +17,7 @@ pipeline {
     agent { label 'docker2' }
       steps {
         sh 'docker pull krishna123456/tomcat:${BUILD_VERSION}'
+        sh 'docker image rm -f krishna123456/tomcat:${BUILD_VERSION}'
         sh 'docker run -d -p 8888:8080 --name tomcatapache krishna123456/tomcat:${BUILD_VERSION}'
       }
     }
