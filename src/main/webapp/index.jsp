@@ -3,12 +3,9 @@
 <title>Krishna's blog</title>
 </head>
 <body>
-	<h1>Recent developments in my journey</h1>
-	<h2>@Completed a road trip</h2>
-	<h2>@Visited my home</h2>
-	<h2>@started a new devops course</h2>
-	<h2>@about to learn jfrog</h2>
-	<h2>@latest commit to check trigger in parameter pipeline build</h2>
+	<h1>Docker-Jenkins</h1>
+	<h2>This was changed using image built and pushed to docker hub from one node</h2>
+	<h2>and again pulled from docker hub to another node </h2>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
