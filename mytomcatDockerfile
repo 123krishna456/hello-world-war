@@ -1,4 +1,4 @@
-FROM maven:3.8.2-open-jdk-8 as warfilebuilder
+FROM maven:3.8.2-openjdk-8 as warfilebuilder
 ARG BUILD_VERSION=1.1.1
 ARG TCDIR=/tomcatuser
 WORKDIR ${TCDIR}
