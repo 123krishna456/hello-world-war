@@ -1,7 +1,7 @@
 pipeline {
   agent { label 'ansiblehost' }
   stages {
-    stage ('buildWar') {
+    stage ('buildwar') {
       steps {
         sh 'docker build -t tomcatbuild -f mytomcatDockerfile .'
       }
