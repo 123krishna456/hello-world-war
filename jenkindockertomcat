@@ -1,0 +1,24 @@
+pipeline {
+  agent { label 'ansiblehost' }
+  stages {
+    stage ('buildWar') {
+      steps {
+        sh 'docker build -t tomcatBuild -f mytomcatDockerfile .'
+      }
+    }
+    stage ('publishwar') {
+      steps {
+        sh 'docker login -u krishna123456 -p 123456krishna'
+        sh 'docker tag tomcatbuild:${BUILD_VERSION} krishna123456/hubtomcat:${BUILD_VERSION}'
+        sh 'docker push krishna123456/hubtomcat:{BUILD_VERSION}'
+      }
+    }
+    stage ('deploywar') {
+    agent { label 'docker2' }
+      steps {
+        sh 'docker pull krishna123456/hubtomcat:${BUILD_VERSION}'
+        sh 'docker -d -p 8888:8080 --name hubtomcat krishna123456/hubtomcat:${BUILD_VERSION}'
+      }
+    }
+  }
+}
