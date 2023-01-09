@@ -10,14 +10,14 @@ pipeline {
       steps {
         sh 'docker login -u krishna123456 -p 123456krishna'
         sh 'docker tag tomcatbuild:${BUILD_VERSION} krishna123456/tomcatbuild:${BUILD_VERSION}'
-        sh 'docker push krishna123456/tomcat:{BUILD_VERSION}'
+        sh 'docker push krishna123456/tomcat:${BUILD_VERSION}'
       }
     }
     stage ('deploywar') {
     agent { label 'docker2' }
       steps {
-        sh 'docker pull krishna123456/hubtomcat:${BUILD_VERSION}'
-        sh 'docker -d -p 8888:8080 --name tomcatapache krishna123456/hubtomcat:${BUILD_VERSION}'
+        sh 'docker pull krishna123456/tomcat:${BUILD_VERSION}'
+        sh 'docker -d -p 8888:8080 --name tomcatapache krishna123456/tomcat:${BUILD_VERSION}'
       }
     }
   }
