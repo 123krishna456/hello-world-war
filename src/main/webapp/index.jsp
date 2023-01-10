@@ -4,8 +4,8 @@
 </head>
 <body>
 	<h1>Docker-Jenkins</h1>
-	<h2>This was changed using image built and pushed to docker hub from one node</h2>
-	<h2>and again pulled from docker hub to another node </h2>
+	<h2>Docker used as agent</h2>
+	<h2>Whole tomcat hosted through container</h2>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
