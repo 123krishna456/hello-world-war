@@ -1,0 +1,17 @@
+pipeline {
+  agent { label 'docker2' }
+  stages {
+    stage ('buildwar') {
+    agent {
+      docker {
+              maven:3.8.2-openjdk-8
+      }
+    }
+      steps {
+        sh 'rm -rf *
+        sh 'git clone https://github.com/123krishna456/hello-world-war.git
+        sh 'mvn clean install'
+      }
+    }
+  }
+}
