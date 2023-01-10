@@ -4,7 +4,7 @@ pipeline {
     stage ('buildwar') {
     agent {
       docker {
-              maven:3.8.2-openjdk-8
+        image 'maven:3.8.2-openjdk-8'
       }
     }
       steps {
