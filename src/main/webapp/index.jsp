@@ -4,8 +4,7 @@
 </head>
 <body>
 	<h1>Docker-Jenkins</h1>
-	<h2>Docker used as agent</h2>
-	<h2>Whole tomcat hosted through container</h2>
+	<h2>pushed to docker hub using withCredentials</h2>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
