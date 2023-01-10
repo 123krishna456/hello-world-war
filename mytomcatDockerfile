@@ -1,11 +1,9 @@
 FROM maven:3.8.2-openjdk-8 as warfilebuilder
-ARG BUILD_VERSION=1.1.1
 ARG TCDIR=/tomcatuser
 WORKDIR ${TCDIR}
 COPY . .
 RUN mvn clean package
 
 FROM tomcat:10.0.27
-ARG BUILD_VERSION=1.1.1
 ARG TCDIR=/tomcatuser
 COPY --from=warfilebuilder ${TCDIR}/target/hello-world-war-${BUILD_VERSION}.war /usr/local/tomcat/webapps
