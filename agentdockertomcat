@@ -1,12 +1,11 @@
 pipeline {
-  agent { label 'docker2' }
-  stages {
-    stage ('buildwar') {
-    agent {
+  agent {
       docker {
         image 'maven:3.8.2-openjdk-8'
       }
-    }
+  }
+  stages {
+    stage ('buildwar') {
       steps {
         sh 'rm -rf *'
         sh 'git clone https://github.com/123krishna456/hello-world-war.git'
