@@ -8,20 +8,20 @@ pipeline {
     }
     stage ('publishwar') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUsername')]) {
-        sh "docker login -u ${env.dockerhubUsername} -p ${env.dockerhubPassword}"
-        sh "docker tag tomcatbuild:${BUILD_VERSION} ${env.dockerhubUsername}/tomcat:${BUILD_VERSION}"
-        sh "docker push ${env.dockerhubUsername}/tomcat:${BUILD_VERSION}"
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
+        sh 'docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}'
+        sh 'docker tag tomcatbuild:${BUILD_VERSION} ${env.dockerhubUser}/tomcat:${BUILD_VERSION}'
+        sh 'docker push ${env.dockerhubUser}/tomcat:${BUILD_VERSION}'
         }
       }
     }
     stage ('deploywar') {
     agent { label 'docker2' }
       steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUsername')]) {
-        sh "docker pull  ${env.dockerhubUsername}/tomcat:${BUILD_VERSION}"
-        sh "docker image rm -f  ${env.dockerhubUsername}/tomcat:${BUILD_VERSION}"
-        sh "docker run -d -p 8888:8080 --name tomcatapache_${BUILD_VERSION}  ${env.dockerhubUsername}/tomcat:${BUILD_VERSION}"
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
+        sh 'docker pull  ${env.dockerhubUser}/tomcat:${BUILD_VERSION}'
+        sh 'docker image rm -f  ${env.dockerhubUser}/tomcat:${BUILD_VERSION}'
+        sh 'docker run -d -p 8888:8080 --name tomcatapache_${BUILD_VERSION}  ${env.dockerhubUser}/tomcat:${BUILD_VERSION}'
         }
       }
     }
