@@ -10,7 +10,9 @@ pipeline {
       steps {
         sh 'rm -rf *'
         sh 'git clone https://github.com/123krishna456/hello-world-war.git'
-        sh 'mvn clean install'
+        dir ('hello-world-war') {
+          sh 'mvn clean install'
+          }
       }
     }
   }
