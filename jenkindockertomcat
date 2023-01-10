@@ -9,7 +9,7 @@ pipeline {
     stage ('publishwar') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
-          sh 'docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}'
+          sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
           sh 'docker tag tomcatbuild:${BUILD_VERSION} ${env.dockerhubUser}/tomcat:${BUILD_VERSION}'
           sh 'docker push ${env.dockerhubUser}/tomcat:${BUILD_VERSION}'
         }
