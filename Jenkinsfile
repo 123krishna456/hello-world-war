@@ -1,5 +1,5 @@
 pipeline{
-  agent { label 'anisblehost' }
+  agent { label 'jenkinworker1' }
   stages {
     stage ('Build') {
       steps {
