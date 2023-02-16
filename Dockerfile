@@ -1,7 +1,6 @@
 FROM maven:3.8.2-openjdk-8 as warfilebuilder
 ARG TCDIR=/tomcatuser
 WORKDIR ${TCDIR}
-ENV BUILD_NUMBER=${BUILD_NUMBER}
 COPY . .
 RUN mvn clean package
 
