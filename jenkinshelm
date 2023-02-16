@@ -15,7 +15,7 @@ pipeline {
                 sh 'docker tag tomcat_build:${BUILD_VERSION} krishna123456/tomcat:${BUILD_VERSION}'
                 sh 'docker push krishna123456/tomcat:${BUILD_VERSION}'
                     
-                sh 'curl -ukittu16000@gmail.com:nkKrishna@123 -T tomcat-${BUILD_VERSION}.tgz https://krishnank.jfrog.io/artifactory/helm-local/helm-prac-0.1.0.tgz-${BUILD_VERSION}.tgz'
+                sh 'curl -ukittu16000@gmail.com:nkKrishna@123 -T tomcat-${BUILD_VERSION}.tgz https://krishnank.jfrog.io/artifactory/helm-local/${BUILD_VERSION}.tgz'
                 }
             }
         } 
