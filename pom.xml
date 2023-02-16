@@ -29,7 +29,7 @@
                                <repository>
                                            <id>central</id>
                                            <name>a0qrhep7xec22-artifactory-primary-0-releases</name>
-                                           <url>https://krishnajfrog123.jfrog.io/artifactory/libs-release-local</url>
+                                           <url>https://krishnank.jfrog.io/artifactory/helm-local/</url>
                                </repository>
         </distributionManagement>
 
